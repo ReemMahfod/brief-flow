@@ -1,13 +1,92 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f0f3f8;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Hide scrollbars everywhere — scrolling still works */
+  html,
+  body,
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  body {
+    @apply m-0 font-sans text-ink-900 antialiased;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 0% 0%, rgba(29, 78, 216, 0.07), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 100% 0%, rgba(14, 116, 144, 0.06), transparent 50%),
+      linear-gradient(165deg, #f8fafc 0%, #eef2f7 48%, #e8edf4 100%);
+    background-attachment: fixed;
+  }
+
+  #root {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background: rgba(29, 78, 216, 0.18);
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-700 text-white shadow-lift hover:-translate-y-0.5 hover:bg-brand-600 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink-200/90 bg-white text-ink-800 hover:border-ink-300 hover:bg-ink-50;
+  }
+
+  .btn-danger {
+    @apply btn border border-red-200 bg-white text-red-700 hover:bg-red-50;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-ink-200/90 bg-white px-3.5 py-2.5 text-sm text-ink-900 shadow-sm placeholder:text-ink-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/15;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-600;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-ink-200/60 bg-white/90 shadow-panel backdrop-blur-sm;
+  }
+
+  .page {
+    @apply animate-rise space-y-6;
+  }
+
+  .soft-link {
+    @apply text-sm font-semibold text-brand-700 transition hover:text-brand-600;
+  }
+
+  .meta {
+    @apply text-xs text-ink-500;
+  }
 }
